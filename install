@@ -18,15 +18,15 @@ rm -rf ~/.gem
 
 # Install basic tools
 echo -e "\n* Installing basic tools"
-sudo apt install git
+sudo apt install git -y
 
 # LazyGit is awesome
 echo -e "\n* Installing lazygit"
-sudo apt install lazygit
+sudo apt install lazygit -y
 
 # Install basic lazyvim dependencies
 echo -e "\n* Installing basic lazyvim dependencies"
-sudo apt install fzf ripgrep fd-find
+sudo apt install fzf ripgrep fd-find -y
 
 # Install neovim. Need to install the one from snap:
 # apt-based is older and lazyvim requires 0.11+
@@ -36,16 +36,12 @@ sudo snap install nvim --classic
 # Probably necessary for Lua (used heavily by LazyVim)?
 # Fixes Lua-related Query Error: "substitute"
 echo -e "\n* Installing luarocks"
-sudo apt install luarocks
-
-# Also Fixes Lua-related Query Error: "substitute"
-echo -e "\n* Installing nodejs"
-sudo apt install nodejs
+sudo apt install luarocks -y
 
 # Needed to install Ruby-related gems such as "ruby-lsp"
 # The reason is that Mason will install the gem into its own folder, which causes the gem and all deps to be installed,
 # some of the deps require native extensions.
-sudo apt install build-essential
+sudo apt install build-essential -y
 
 # Nerd Font: downloaded from https://www.nerdfonts.com/
 # Used by lazyvim a lot, for all sorts of ascii graphics, keyboard characters etc.
@@ -127,6 +123,12 @@ echo -e "\n* Installing Ruby"
 # To build Ruby, you need couple of things
 sudo apt install zlib1g-dev libffi-dev libyaml-dev
 mise use --global ruby@3.4
+
+
+# Also Fixes Lua-related Query Error: "substitute"
+echo -e "\n* Installing nodejs"
+#sudo apt install nodejs
+mise use --global node
 
 
 # Configure LazyVim according to https://www.lazyvim.org/installation
