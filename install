@@ -72,9 +72,18 @@ fi
 echo -e "\n* Installing Alacritty terminal"
 sudo apt install alacritty -y
 
+# Install Alacritty themes
+rm -rf ~/.config/alacritty/themes
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
 mkdir -p ~/.config/alacritty
 cat << 'EOF' >~/.config/alacritty/alacritty.toml
 # https://alacritty.org/config-alacritty.html
+[general]
+
+import = ["~/.config/alacritty/themes/themes/github_light.toml"]
+
 [window]
 opacity = 0.95
 
