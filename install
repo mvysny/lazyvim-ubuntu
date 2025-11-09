@@ -50,25 +50,46 @@ sudo apt install build-essential
 # Nerd Font: downloaded from https://www.nerdfonts.com/
 # Used by lazyvim a lot, for all sorts of ascii graphics, keyboard characters etc.
 # You want this, otherwise lazyvim will show lots of missing characters.
-# NOT NECESSARY FOR KITTY - probably Kitty comes in with NerdFonts bundled in.
-#if [[ ! -e "~/.fonts/JetBrainsMonoNerdFont*.ttf" ]]; then
-  #echo -e "\n* Downloading Nerd Font"
-  #curl https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
-  #unzip x JetBrainsMono.zip -d ~/.fonts/ -o
-  #rm JetBrainsMono.zip
+# Necessary for Alacritty
+if [[ ! -e "~/.local/share/fonts/JetBrainsMonoNerdFont*.ttf" ]]; then
+  # sudo apt install fonts-jetbrains-mono   # Doesn't include Nerd Fonts
+  echo -e "\n* Downloading Nerd Font"
+  mkdir -p ~/.local/share/fonts
+  
+  curl -fLo "JetBrainsMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+  unzip -x JetBrainsMono.zip -d ~/.local/share/fonts/
+  rm JetBrainsMono.zip
   
   # update font cache
-  #fc-cache -fv
+  fc-cache -fv
+  fc-list | grep -i "JetBrainsMono.*Nerd"
   
-  # TODO is this necessary? Kitty have NerdFont bundled in?
-  #read -p "change the font for your terminal to 'JetBrains Mono Nerd Font'"
-#else
-#  echo -e "\n* Nerd Font already installed"
-#fi
+else
+  echo -e "\n* Nerd Font already installed"
+fi
 
-# kitty - recommended for lazyvim
-echo -e "\n* Installing Kitty terminal"
-sudo apt install kitty
+# alacritty - recommended for lazyvim
+echo -e "\n* Installing Alacritty terminal"
+sudo apt install alacritty -y
+
+mkdir -p ~/.config/alacritty
+cat << 'EOF' >~/.config/alacritty/alacritty.toml
+# https://alacritty.org/config-alacritty.html
+[window]
+opacity = 0.92
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
+
+size = 13.0
+
+# Optional: enable ligatures (great for coding)
+offset = { x = 0, y = 1 }
+glyph_offset = { x = 0, y = 1 }
+EOF
 
 # Install Ruby - not strictly necessary for LazyGit, but
 # I want to set up Ruby LazyVim dev env.
