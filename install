@@ -78,7 +78,7 @@ cat << 'EOF' >~/.config/alacritty/alacritty.toml
 # https://alacritty.org/config-alacritty.html
 [general]
 
-import = ["~/.config/alacritty/themes/themes/github_light.toml"]
+import = ["~/.config/alacritty/themes/themes/tokyo_night.toml"]
 
 [window]
 opacity = 0.95
