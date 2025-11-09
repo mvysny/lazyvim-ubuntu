@@ -136,6 +136,6 @@ echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 # Done!
-echo -e "\n* Done. Run nvim from kitty; then run :LazyHealth"
+echo -e "\n* Done. Run nvim from the Alacritty terminal; then run :LazyHealth"
 echo "- Install LazyVim/Ruby: https://www.lazyvim.org/extras/lang/ruby"
 
