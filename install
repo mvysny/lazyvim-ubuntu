@@ -51,7 +51,7 @@ sudo apt install build-essential
 # Used by lazyvim a lot, for all sorts of ascii graphics, keyboard characters etc.
 # You want this, otherwise lazyvim will show lots of missing characters.
 # Necessary for Alacritty
-if [[ ! -e "~/.local/share/fonts/JetBrainsMonoNerdFont*.ttf" ]]; then
+if [[ ! -e "$HOME/.local/share/fonts/JetBrainsMonoNerdFont-Regular.ttf" ]]; then
   # sudo apt install fonts-jetbrains-mono   # Doesn't include Nerd Fonts
   echo -e "\n* Downloading Nerd Font"
   mkdir -p ~/.local/share/fonts
@@ -76,7 +76,7 @@ mkdir -p ~/.config/alacritty
 cat << 'EOF' >~/.config/alacritty/alacritty.toml
 # https://alacritty.org/config-alacritty.html
 [window]
-opacity = 0.92
+opacity = 0.95
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
@@ -84,12 +84,15 @@ bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
 italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
 
-size = 13.0
+size = 11.0
 
 # Optional: enable ligatures (great for coding)
 offset = { x = 0, y = 1 }
 glyph_offset = { x = 0, y = 1 }
 EOF
+
+echo -e "\n* (Optional) Select Alacritty as the default terminal"
+sudo update-alternatives --config x-terminal-emulator
 
 # Install Ruby - not strictly necessary for LazyGit, but
 # I want to set up Ruby LazyVim dev env.
