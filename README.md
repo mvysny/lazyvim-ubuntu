@@ -9,9 +9,11 @@ Requirements:
 
 ## Installation procedure:
 
+To install everything, including the terminal:
+
 - Run `./install`
 
-To install just the terminal:
+To install just the *Alacritty* terminal:
 
 - Run `./install-term`
 - Uninstall `gnome-terminal`
