@@ -1,0 +1,54 @@
+#!/bin/bash
+set -e -o pipefail
+
+# Nerd Font: downloaded from https://www.nerdfonts.com/
+# Used by lazyvim a lot, for all sorts of ascii graphics, keyboard characters etc.
+# You want this, otherwise lazyvim will show lots of missing characters.
+# Necessary for Alacritty
+if [[ ! -e "$HOME/.local/share/fonts/UbuntuMonoNerdFont-Regular.ttf" ]]; then
+  echo -e "\n* Downloading UbuntuMono Nerd Font"
+  mkdir -p ~/.local/share/fonts
+  
+  curl -fLo "UbuntuMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/UbuntuMono.zip
+  unzip -x UbuntuMono.zip -d ~/.local/share/fonts/
+  rm UbuntuMono.zip
+  
+  # update font cache
+  fc-cache -fv
+  fc-list | grep -i "UbuntuMono.*Nerd"
+  
+else
+  echo -e "\n* Nerd Font already installed"
+fi
+
+# alacritty - recommended for lazyvim
+echo -e "\n* Installing Alacritty terminal"
+sudo apt install alacritty -y
+
+# Install Alacritty themes
+rm -rf ~/.config/alacritty/themes
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+cat << 'EOF' >~/.config/alacritty/alacritty.toml
+# https://alacritty.org/config-alacritty.html
+[general]
+
+import = ["~/.config/alacritty/themes/themes/tokyo_night.toml"]
+
+[window]
+opacity = 0.95
+dimensions = { columns = 160, lines = 40 }
+
+[font]
+normal = { family = "UbuntuMono Nerd Font Mono", style = "Regular" }
+bold = { family = "UbuntuMono Nerd Font Mono", style = "Bold" }
+italic = { family = "UbuntuMono Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "UbuntuMono Nerd Font Mono", style = "Bold Italic" }
+
+size = 13.0
+EOF
+
+echo -e "\n* (Optional) Select Alacritty as the default terminal"
+sudo update-alternatives --config x-terminal-emulator
+
