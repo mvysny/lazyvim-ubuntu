@@ -7,7 +7,12 @@ Requirements:
 
 - Ubuntu 25.10 or newer
 
-Installation procedure:
+## Installation procedure:
 
 - Run `./install`
+
+To install just the terminal:
+
+- Run `./install-term`
+- Uninstall `gnome-terminal`
 
