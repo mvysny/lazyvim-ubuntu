@@ -115,12 +115,14 @@ fi
 
 echo -e "\n* Installing Ruby"
 # To build Ruby, you need couple of things
-sudo apt install zlib1g-dev libffi-dev libyaml-dev
+sudo apt install -y zlib1g-dev libffi-dev libyaml-dev
 mise use --global ruby@3.4
 
 
 # Also Fixes Lua-related Query Error: "substitute"
 echo -e "\n* Installing nodejs"
+
+# nodejs in apt is older and comes with tons of dependencies. It's easier to install & update it via mise
 #sudo apt install nodejs
 mise use --global node
 
