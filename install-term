@@ -8,15 +8,15 @@ set -e -o pipefail
 if [[ ! -e "$HOME/.local/share/fonts/UbuntuMonoNerdFont-Regular.ttf" ]]; then
   echo -e "\n* Downloading UbuntuMono Nerd Font"
   mkdir -p ~/.local/share/fonts
-  
+
   curl -fLo "UbuntuMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/UbuntuMono.zip
   unzip -x UbuntuMono.zip -d ~/.local/share/fonts/
   rm UbuntuMono.zip
-  
+
   # update font cache
   fc-cache -fv
   fc-list | grep -i "UbuntuMono.*Nerd"
-  
+
 else
   echo -e "\n* Nerd Font already installed"
 fi
@@ -30,7 +30,7 @@ rm -rf ~/.config/alacritty/themes
 mkdir -p ~/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
-cat << 'EOF' >~/.config/alacritty/alacritty.toml
+cat <<'EOF' >~/.config/alacritty/alacritty.toml
 # https://alacritty.org/config-alacritty.html
 [general]
 
@@ -51,4 +51,3 @@ EOF
 
 echo -e "\n* (Optional) Select Alacritty as the default terminal"
 sudo update-alternatives --config x-terminal-emulator
-
