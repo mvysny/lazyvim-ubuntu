@@ -52,23 +52,21 @@ sudo apt install build-essential -y
 
 if [[ ! -e "/usr/bin/mise" ]]; then
   echo -e "\n* Installing Mise"
-  
+
   sudo apt update -y && sudo apt install -y gpg sudo wget curl
   sudo install -dm 755 /etc/apt/keyrings
-  wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null
+  wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1>/dev/null
   echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
   sudo apt update
   sudo apt install -y mise
-  
-  echo 'mise activate fish | source' >> ~/.config/fish/config.fish
-fi
 
+  echo 'mise activate fish | source' >>~/.config/fish/config.fish
+fi
 
 echo -e "\n* Installing Ruby"
 # To build Ruby, you need couple of things
 sudo apt install -y zlib1g-dev libffi-dev libyaml-dev
-mise use --global ruby@3.4
-
+mise use --global ruby
 
 # Also Fixes Lua-related Query Error: "substitute"
 echo -e "\n* Installing nodejs"
@@ -77,7 +75,6 @@ echo -e "\n* Installing nodejs"
 #sudo apt install nodejs
 mise use --global node
 
-
 # Configure LazyVim according to https://www.lazyvim.org/installation
 echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
@@ -85,4 +82,3 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 # Done!
 echo -e "\n* Done. Run nvim from the Alacritty terminal; then run :LazyHealth"
 echo "- Install LazyVim/Ruby: https://www.lazyvim.org/extras/lang/ruby"
-
