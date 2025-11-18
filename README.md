@@ -41,3 +41,12 @@ To install just the *Alacritty* terminal:
   - Search for and install `lang.ruby`, by pressing `x` inside the `()` icon
   - More info: [LazyVim Ruby](https://www.lazyvim.org/extras/lang/ruby)
 
+# Further reading
+
+- [LazyVim for Ambitious Developers](https://lazyvim-ambitious-devs.phillips.codes/) does an excellent job explaining
+  in layman's terms how LazyVim works. A great introduction to LazyVim, read this first.
+- [Moving Blazingly Fast With The Core Vim Motions](https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/moving-blazingly-fast-with-the-core-vim-motions/)
+  to learn how to work with Vim, when you're ready to ditch the mouse.
+  - When you're ready to step up your vim game: [Practical Vim](https://pragprog.com/titles/dnvim2/practical-vim-second-edition/)
+- TODO LazyVim for Intellij IDEA developers (I'll write this blogpost soon)
+
