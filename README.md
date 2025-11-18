@@ -20,7 +20,7 @@ To install just the *Alacritty* terminal:
 
 ## What this does
 
-- Installs NeoVim from snap, which is newer than the one in apt.
+- Installs [NeoVim](https://neovim.io/) from snap, which is newer than the one in apt.
   - Uninstalls apt NeoVim if installed
 - Prepares NeoVim for Ruby development
   - Installs [Mise](https://mise.jdx.dev/lang/ruby.html) which manages installed Ruby instances.
