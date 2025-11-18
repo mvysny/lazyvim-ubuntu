@@ -1,7 +1,7 @@
 # LazyVim Ubuntu installer
 
 Sets up [LazyVim](https://www.lazyvim.org) on Ubuntu.
-Also prepares LazyVim for Ruby development.
+Also prepares LazyVim for [Ruby](https://www.ruby-lang.org/en/) development.
 
 Requirements:
 
