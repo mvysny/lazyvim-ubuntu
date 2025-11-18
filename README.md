@@ -48,5 +48,7 @@ To install just the *Alacritty* terminal:
 - [Moving Blazingly Fast With The Core Vim Motions](https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/moving-blazingly-fast-with-the-core-vim-motions/)
   to learn how to work with Vim, when you're ready to ditch the mouse.
   - When you're ready to step up your vim game: [Practical Vim](https://pragprog.com/titles/dnvim2/practical-vim-second-edition/)
-- TODO LazyVim for Intellij IDEA developers (I'll write this blogpost soon)
+- [LazyVim for Intellij IDEA developers](https://mvysny.github.io/lazyvim-for-idea-devs/) - if you already
+  know IDEA, this will help you learn LazyVim the IDE part faster.
+
 
