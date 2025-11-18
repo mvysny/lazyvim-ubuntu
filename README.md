@@ -31,8 +31,8 @@ To install just the *Alacritty* terminal:
 
 ## Once the script finishes
 
-- Close this terminal and open a new one (Alacritty), so that Mise activates"
-- (Optional) uninstall gnome-terminal and only keep Alacritty"
+- Close this terminal and open a new one (Alacritty), so that Mise activates
+- (Optional) uninstall gnome-terminal and only keep Alacritty
 - Run `nvim` from the Alacritty terminal and wait for it to install LazyVim
 - Restart `nvim` - you're welcomed by the LazyVim welcome screen.
 - Type in `:LazyHealth` to check everything's okay
