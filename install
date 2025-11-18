@@ -31,6 +31,7 @@ sudo apt install fzf ripgrep fd-find -y
 # Install neovim. Need to install the one from snap:
 # apt-based is older and lazyvim requires 0.11+
 echo -e "\n* Installing NeoVim"
+sudo apt autoremove --purge neovim
 sudo snap install nvim --classic
 
 # Probably necessary for Lua (used heavily by LazyVim)?
@@ -71,7 +72,7 @@ mise use --global ruby
 # Also Fixes Lua-related Query Error: "substitute"
 echo -e "\n* Installing nodejs"
 
-# nodejs in apt is older and comes with tons of dependencies. It's easier to install & update it via mise
+# nodejs in apt is older; also npm comes with tons of dependencies. It's easier to install & update it via mise
 #sudo apt install nodejs
 mise use --global node
 
@@ -80,5 +81,9 @@ echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 # Done!
-echo -e "\n* Done. Run nvim from the Alacritty terminal; then run :LazyHealth"
-echo "- Install LazyVim/Ruby: https://www.lazyvim.org/extras/lang/ruby"
+echo -e "\n* Done. Now:"
+echo "- Close this terminal and open a new one (Alacritty), so that Mise activates"
+echo "- (Optional) uninstall gnome-terminal and only keep Alacritty"
+echo "- Run nvim from the Alacritty terminal"
+echo "- Once everything installs, run :LazyHealth"
+echo "- Install LazyVim/Ruby: open Lazy Extras and install lang.ruby. More info: https://www.lazyvim.org/extras/lang/ruby"
