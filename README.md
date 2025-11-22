@@ -6,6 +6,7 @@ Also prepares LazyVim for [Ruby](https://www.ruby-lang.org/en/) development.
 Requirements:
 
 - Ubuntu 25.10 or newer
+- Both x86-64 (amd64) and arm64 works (tested on Ubuntu 25.10 for Raspberry PI 5)
 
 ## Installation procedure:
 
