@@ -40,7 +40,10 @@ To install just the *Alacritty* terminal:
 - Install LazyVim/Ruby:
   - open Lazy Extras by pressing `x` on the main LazyVim screen
   - Search for and install `lang.ruby`, by pressing `x` inside the `()` icon
-  - More info: [LazyVim Ruby](https://www.lazyvim.org/extras/lang/ruby)
+    - More info: [LazyVim Ruby](https://www.lazyvim.org/extras/lang/ruby)
+  - Add support for tests: install `test.core`
+  - Install `coding.mini-surround` to enable `gsr'"` to turn Ruby `'string'` into `"string"`
+  - Install `lang.java` for Java support, `dap.core`  for debugging
 
 # Further reading
 
