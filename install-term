@@ -13,8 +13,8 @@ if [[ ! -e "$HOME/.local/share/fonts/UbuntuMonoNerdFont-Regular.ttf" ]]; then
   unzip -x UbuntuMono.zip -d ~/.local/share/fonts/
   rm UbuntuMono.zip
 
-  # update font cache
-  fc-cache -fv
+  # update font cache. Rarely that fails - just skip it
+  fc-cache -fv || echo "* WARN: fc-cache failed but continuing"
   fc-list | grep -i "UbuntuMono.*Nerd"
 
 else
