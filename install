@@ -45,10 +45,6 @@ sudo apt install luarocks -y
 # Also Fixes Lua-related Query Error: "substitute"
 echo -e "\n* Installing nodejs"
 
-# nodejs in apt is older; also npm comes with tons of dependencies. It's easier to install & update it via mise
-#sudo apt install nodejs
-mise use --global node
-
 # Configure LazyVim according to https://www.lazyvim.org/installation
 echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
