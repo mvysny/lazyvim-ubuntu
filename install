@@ -45,6 +45,9 @@ sudo apt install luarocks -y
 # Configure LazyVim according to https://www.lazyvim.org/installation
 echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
+# Use light theme
+mkdir -p ~/.config/nvim/lua/plugins/
+cp colorscheme.lua ~/.config/nvim/lua/plugins/
 
 # Done!
 echo -e "\n* Done. Now:"
