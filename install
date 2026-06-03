@@ -42,9 +42,6 @@ sudo apt install luarocks -y
 # Install Ruby
 ./install-ruby
 
-# Also Fixes Lua-related Query Error: "substitute"
-echo -e "\n* Installing nodejs"
-
 # Configure LazyVim according to https://www.lazyvim.org/installation
 echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
