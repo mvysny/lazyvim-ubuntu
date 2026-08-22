@@ -11,6 +11,8 @@ echo -e "\n* Installing Ruby"
 sudo apt install -y ruby ruby-bundler
 # to update openssl gem, you need to build C stuff from scratch and that requires ruby.h and other deps
 sudo apt install -y ruby-dev libssl-dev
+# Also `make` and `gcc` are necessary
+sudo apt install -y make gcc
 
 echo -e "\n* Configuring gem folder to ~/.gem"
 # This will be honored not just by `bundler`, but also by `gem`
