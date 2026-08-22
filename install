@@ -32,7 +32,7 @@ sudo apt autoremove --purge neovim
 sudo snap install nvim --classic
 
 # Probably necessary for Lua (used heavily by LazyVim)?
-# Fixes Lua-related Query Error: "substitute"
+# Fixes Lua-related Query Error: "substitute" (?)
 echo -e "\n* Installing luarocks"
 sudo apt install luarocks -y
 
@@ -47,7 +47,7 @@ echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 # Use light theme
 mkdir -p ~/.config/nvim/lua/plugins/
-cp colorscheme.lua ~/.config/nvim/lua/plugins/
+cp *.lua ~/.config/nvim/lua/plugins/
 
 # Done!
 echo -e "\n* Done. Now:"
