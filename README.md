@@ -24,15 +24,14 @@ To install just the *Alacritty* terminal:
 - Installs [NeoVim](https://neovim.io/) from snap, which is newer than the one in apt.
   - Uninstalls apt NeoVim if installed
 - Prepares NeoVim for Ruby development
-  - Installs [Mise](https://mise.jdx.dev/lang/ruby.html) which manages installed Ruby instances.
-  - Installs nodejs and Ruby via Mise
-  - Installs `build-essentials` and other packages so that Ruby and gems install successfully
+  - Installs [Ruby](https://mvysny.github.io/ruby/)
+  - Installs other packages so that gems install and update successfully
 - Installs the Alacritty terminal
   - Also installs [Nerd Fonts](https://www.nerdfonts.com/) which is required by LazyVim to display all icons properly.
 
 ## Once the script finishes
 
-- Close this terminal and open a new one (Alacritty), so that Mise activates
+- Close this terminal and open a new one (Alacritty), so that everything activates
 - (Optional) uninstall gnome-terminal and only keep Alacritty
 - Run `nvim` from the Alacritty terminal and wait for it to install LazyVim
 - Restart `nvim` - you're welcomed by the LazyVim welcome screen.
