@@ -10,7 +10,7 @@ rm -rf ~/.gem
 echo -e "\n* Installing Ruby"
 sudo apt install -y ruby ruby-bundler
 # to update openssl gem, you need to build C stuff from scratch and that requires ruby.h and other deps
-sudo apt install -y ruby-dev libssl-dev
+sudo apt install -y ruby-dev libssl-dev libffi-dev libyaml-dev
 # Also `make` and `gcc` are necessary
 sudo apt install -y make gcc
 
