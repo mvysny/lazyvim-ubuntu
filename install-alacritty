@@ -19,6 +19,6 @@ echo -e "\n* Select Alacritty as the default terminal"
 sudo update-alternatives --config x-terminal-emulator
 echo "- Close this terminal and open a new one (Alacritty), so that everything activates"
 echo "- (Optional) uninstall gnome-terminal/ptyxis and only keep Alacritty"
-echo "- Once done, kill this terminal and re-run `./install`"
+echo "- Once done, kill this terminal and re-run ./install"
 exit 1
 
