@@ -20,7 +20,7 @@ install_nerd_font() {
   mkdir -p "$FONTS_DIR"
   local zip
   zip="$(mktemp --suffix=.zip)"
-  curl -fLo "$zip" "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$name.zip"
+  curl -fsSLo "$zip" "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$name.zip"
   # only the fonts, not the readme/license; -o overwrites a half-finished earlier run without prompting
   unzip -oq "$zip" '*.ttf' -d "$FONTS_DIR"
   rm "$zip"
