@@ -1,8 +1,11 @@
 #!/bin/bash
 set -e -o pipefail
 
+# Install terminal fonts
+./install-fonts
+
 # Install Alacritty
-./install-term
+./install-alacritty
 
 # Install Ruby
 ./install-ruby

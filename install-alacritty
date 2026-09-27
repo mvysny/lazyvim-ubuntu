@@ -2,26 +2,6 @@
 set -e -o pipefail
 [ -f "/usr/bin/alacritty" ] && exit 0
 
-# Nerd Font: downloaded from https://www.nerdfonts.com/
-# Used by lazyvim a lot, for all sorts of ascii graphics, keyboard characters etc.
-# You want this, otherwise lazyvim will show lots of missing characters.
-# Necessary for Alacritty
-if [[ ! -e "$HOME/.local/share/fonts/UbuntuMonoNerdFont-Regular.ttf" ]]; then
-  echo -e "\n* Downloading UbuntuMono Nerd Font"
-  mkdir -p ~/.local/share/fonts
-
-  curl -fLo "UbuntuMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/UbuntuMono.zip
-  unzip -x UbuntuMono.zip -d ~/.local/share/fonts/
-  rm UbuntuMono.zip
-
-  # update font cache. Rarely that fails - just skip it
-  fc-cache -fv || echo "* WARN: fc-cache failed but continuing"
-  fc-list | grep -i "UbuntuMono.*Nerd"
-
-else
-  echo -e "\n* Nerd Font already installed"
-fi
-
 # alacritty - recommended for lazyvim
 echo -e "\n* Installing Alacritty terminal"
 sudo apt install alacritty -y
@@ -46,6 +26,10 @@ normal = { family = "UbuntuMono Nerd Font Mono", style = "Regular" }
 bold = { family = "UbuntuMono Nerd Font Mono", style = "Bold" }
 italic = { family = "UbuntuMono Nerd Font Mono", style = "Italic" }
 bold_italic = { family = "UbuntuMono Nerd Font Mono", style = "Bold Italic" }
+#normal = { family = "JetBrains Nerd Font Mono", style = "Regular" }
+#bold = { family = "JetBrains Nerd Font Mono", style = "Bold" }
+#italic = { family = "JetBrains Nerd Font Mono", style = "Italic" }
+#bold_italic = { family = "JetBrains Nerd Font Mono", style = "Bold Italic" }
 
 size = 15.0
 EOF

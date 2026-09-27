@@ -1,0 +1,43 @@
+#!/bin/bash
+set -e -o pipefail
+
+# Nerd Font: downloaded from https://www.nerdfonts.com/
+# Used by lazyvim a lot, for all sorts of ascii graphics, keyboard characters etc.
+# You want this, otherwise lazyvim will show lots of missing characters.
+# Necessary for Alacritty
+if [[ ! -e "$HOME/.local/share/fonts/UbuntuMonoNerdFont-Regular.ttf" ]]; then
+  echo -e "\n* Downloading UbuntuMono Nerd Font"
+  mkdir -p ~/.local/share/fonts
+
+  curl -fLo "UbuntuMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/UbuntuMono.zip
+  unzip -x UbuntuMono.zip -d ~/.local/share/fonts/
+  rm ~/.local/share/fonts/*.md
+  rm ~/.local/share/fonts/*.txt
+  rm UbuntuMono.zip
+
+  # update font cache. Rarely that fails - just skip it
+  fc-cache -fv || echo "* WARN: fc-cache failed but continuing"
+  fc-list | grep -i "UbuntuMono.*Nerd"
+
+else
+  echo -e "\n* UbuntuMono Nerd Font already installed"
+fi
+
+# JetBrains mono
+if [[ ! -e "$HOME/.local/share/fonts/JetBrainsMonoNerdFont-Regular.ttf" ]]; then
+  echo -e "\n* Downloading JetBrains Nerd Font"
+  mkdir -p ~/.local/share/fonts
+
+  curl -fLo "JetBrainsMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+  unzip -x JetBrainsMono.zip -d ~/.local/share/fonts/
+  rm ~/.local/share/fonts/*.md
+  rm ~/.local/share/fonts/*.txt
+  rm JetBrainsMono.zip
+
+  # update font cache. Rarely that fails - just skip it
+  fc-cache -fv || echo "* WARN: fc-cache failed but continuing"
+  fc-list | grep -i "JetBrainsMono.*Nerd"
+
+else
+  echo -e "\n* JetBrains Nerd Font already installed"
+fi
