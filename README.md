@@ -17,9 +17,8 @@ Requirements:
 
 Run the scripts from this directory:
 
-- Run `./install-alacritty` to install the Alacritty terminal and pick it as the default terminal.
+- Run `./install-alacritty` to install the Alacritty terminal, make it the default terminal and uninstall gnome-terminal and ptyxis.
 - Close this terminal and open Alacritty, so that the fonts and the theme activate.
-- (Optional) uninstall gnome-terminal/ptyxis and only keep Alacritty.
 - In Alacritty, run `./install`
 
 ## What this does
@@ -29,6 +28,8 @@ In the order the scripts run:
 - Installs [Nerd Fonts](https://www.nerdfonts.com/) UbuntuMono and JetBrainsMono, which LazyVim needs to display all icons properly.
 - Installs the Alacritty terminal and makes it the default terminal
   - JetBrainsMono Nerd Font, the catppuccin-latte theme
+  - Ctrl+Alt+T, "Open in Terminal" and the dock icon open Alacritty
+  - Uninstalls gnome-terminal and ptyxis
 - Prepares NeoVim for Ruby development
   - Installs [Ruby](https://mvysny.github.io/ruby/) from apt; gems go to `~/.gem`
   - Installs other packages so that gems install and update successfully

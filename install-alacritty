@@ -13,12 +13,21 @@ rm -rf ~/.config/alacritty/themes
 mkdir -p ~/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
+# seeds/.config/xdg-terminals.list makes Alacritty the terminal GNOME opens (Ctrl+Alt+T, "Open in Terminal"):
+# since Ubuntu 25.10 GNOME launches terminals via xdg-terminal-exec, which reads that file first.
 cp -r seeds/. ~/
 
-echo -e "\n* Select Alacritty as the default terminal"
-sudo update-alternatives --config x-terminal-emulator
-echo "- Close this terminal and open a new one (Alacritty), so that everything activates"
-echo "- (Optional) uninstall gnome-terminal/ptyxis and only keep Alacritty"
-echo "- Once done, kill this terminal and re-run ./install"
+echo -e "\n* Making Alacritty the default terminal"
+sudo update-alternatives --set x-terminal-emulator /usr/bin/alacritty
+# swap the dock's terminal icon for Alacritty; a dock without one is left alone
+favorites=$(gsettings get org.gnome.shell favorite-apps) &&
+  gsettings set org.gnome.shell favorite-apps "$(echo "$favorites" | sed -E "s/'org\.gnome\.(Ptyxis|Terminal)\.desktop'/'Alacritty.desktop'/")" ||
+  echo "* WARN: couldn't update the dock favorites but continuing"
+
+echo -e "\n* Uninstalling gnome-terminal and ptyxis"
+sudo apt remove gnome-terminal ptyxis -y
+
+echo "- Close this terminal and open Alacritty, so that everything activates"
+echo "- Then re-run ./install inside Alacritty"
 exit 1
 
