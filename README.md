@@ -10,25 +10,36 @@ Requirements:
 
 ## Installation procedure:
 
-To install everything:
+> [!WARNING]
+> This deletes your existing NeoVim setup: `~/.config/nvim`, `~/.cache/nvim`, `~/.local/share/nvim`
+> and `~/.local/state/nvim`. When Ruby isn't installed yet it also deletes `~/.gem`, and when
+> Alacritty isn't installed yet it overwrites `~/.config/alacritty/alacritty.toml`.
 
-- Run `./install-alacritty` to install Alacritty terminal, and run it.
+Run the scripts from this directory:
+
+- Run `./install-alacritty` to install the Alacritty terminal and pick it as the default terminal.
+- Close this terminal and open Alacritty, so that the fonts and the theme activate.
+- (Optional) uninstall gnome-terminal/ptyxis and only keep Alacritty.
 - In Alacritty, run `./install`
 
 ## What this does
 
+In the order the scripts run:
+
+- Installs [Nerd Fonts](https://www.nerdfonts.com/) UbuntuMono and JetBrainsMono, which LazyVim needs to display all icons properly.
+- Installs the Alacritty terminal and makes it the default terminal
+  - JetBrainsMono Nerd Font, the catppuccin-latte theme
+- Prepares NeoVim for Ruby development
+  - Installs [Ruby](https://mvysny.github.io/ruby/) from apt; gems go to `~/.gem`
+  - Installs other packages so that gems install and update successfully
 - Installs [NeoVim](https://neovim.io/) from snap, which is newer than the one in apt.
   - Uninstalls apt NeoVim if installed
-- Prepares NeoVim for Ruby development
-  - Installs [Ruby](https://mvysny.github.io/ruby/)
-  - Installs other packages so that gems install and update successfully
-- Installs the Alacritty terminal
-  - Also installs [Nerd Fonts](https://www.nerdfonts.com/) which is required by LazyVim to display all icons properly.
+  - Installs LazyGit and the LazyVim dependencies: fzf, ripgrep, fd-find, luarocks
+- Sets up LazyVim from the [LazyVim starter](https://github.com/LazyVim/starter)
+  - The catppuccin-latte theme, fullscreen LazyGit
 
 ## Once the script finishes
 
-- Close this terminal and open a new one (Alacritty), so that everything activates
-- (Optional) uninstall gnome-terminal and only keep Alacritty
 - Run `nvim` from the Alacritty terminal and wait for it to install LazyVim
 - Restart `nvim` - you're welcomed by the LazyVim welcome screen.
 - Type in `:LazyHealth` to check everything's okay
