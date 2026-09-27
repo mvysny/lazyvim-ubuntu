@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e -o pipefail
+[ -f "/usr/bin/alacritty" ] && exit 0
 
 # Nerd Font: downloaded from https://www.nerdfonts.com/
 # Used by lazyvim a lot, for all sorts of ascii graphics, keyboard characters etc.
