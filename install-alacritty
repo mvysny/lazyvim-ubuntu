@@ -2,6 +2,8 @@
 set -e -o pipefail
 [ -f "/usr/bin/alacritty" ] && exit 0
 
+./install-fonts
+
 # alacritty - recommended for lazyvim
 echo -e "\n* Installing Alacritty terminal"
 sudo apt install alacritty -y
@@ -13,5 +15,10 @@ git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/theme
 
 cp -r seeds/. ~/
 
-echo -e "\n* (Optional) Select Alacritty as the default terminal"
+echo -e "\n* Select Alacritty as the default terminal"
 sudo update-alternatives --config x-terminal-emulator
+echo "- Close this terminal and open a new one (Alacritty), so that everything activates"
+echo "- (Optional) uninstall gnome-terminal/ptyxis and only keep Alacritty"
+echo "- Once done, kill this terminal and re-run `./install`"
+exit 1
+

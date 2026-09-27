@@ -45,8 +45,6 @@ cp *.lua ~/.config/nvim/lua/plugins/
 
 # Done!
 echo -e "\n* Done. Now:"
-echo "- Close this terminal and open a new one (Alacritty), so that everything activates"
-echo "- (Optional) uninstall gnome-terminal and only keep Alacritty"
 echo "- Run nvim from the Alacritty terminal"
 echo "- Once everything installs, run :LazyHealth"
 echo "- Install LazyVim/Ruby: open Lazy Extras and install lang.ruby. More info: https://www.lazyvim.org/extras/lang/ruby"
