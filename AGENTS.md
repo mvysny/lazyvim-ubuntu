@@ -33,7 +33,7 @@ Every fact lives in exactly one of these; the others link to it.
 - `install-fonts` — UbuntuMono and JetBrainsMono Nerd Fonts into `~/.local/share/fonts`.
 - `install-alacritty` — fonts, Alacritty from apt, the alacritty-theme repo, `seeds/` into `~`, Alacritty as the default terminal, removes gnome-terminal and ptyxis; exits 1 after a fresh install so `install` stops until rerun inside Alacritty.
 - `install-ruby` — skipped when Ruby is present; else wipes `~/.gem`, apt Ruby plus the headers and toolchain gems build against.
-- `install-lazyvim` — wipes all NeoVim state; apt tools, snap NeoVim, the LazyVim starter, our `*.lua`.
+- `install-lazyvim` — wipes all NeoVim state; apt tools, snap NeoVim, the LazyVim starter, our `*.lua`, the enabled extras written into `lazyvim.json`.
 - `*.lua` — LazyVim plugin overrides: colorscheme, snacks explorer and lazygit.
 - `seeds/` — dotfiles mirroring `$HOME`, copied verbatim; today the Alacritty config and `xdg-terminals.list`.
 

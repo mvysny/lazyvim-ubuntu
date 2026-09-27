@@ -35,22 +35,19 @@ In the order the scripts run:
   - Installs other packages so that gems install and update successfully
 - Installs [NeoVim](https://neovim.io/) from snap, which is newer than the one in apt.
   - Uninstalls apt NeoVim if installed
-  - Installs LazyGit and the LazyVim dependencies: fzf, ripgrep, fd-find, luarocks
+  - Installs LazyGit and the LazyVim dependencies: fzf, ripgrep, fd-find
 - Sets up LazyVim from the [LazyVim starter](https://github.com/LazyVim/starter)
   - The catppuccin-latte theme, fullscreen LazyGit
+  - Enables the Lazy Extras `lang.ruby` ([more info](https://www.lazyvim.org/extras/lang/ruby)), `test.core`, `dap.core`,
+    `coding.yanky`, `coding.mini-surround` (`gsr'"` turns Ruby `'string'` into `"string"`),
+    and `lang.java` when `java` is on PATH
 
 ## Once the script finishes
 
 - Run `nvim` from the Alacritty terminal and wait for it to install LazyVim
 - Restart `nvim` - you're welcomed by the LazyVim welcome screen.
 - Type in `:LazyHealth` to check everything's okay
-- Install LazyVim/Ruby:
-  - open Lazy Extras by pressing `x` on the main LazyVim screen
-  - Search for and install `lang.ruby`, by pressing `x` inside the `()` icon
-    - More info: [LazyVim Ruby](https://www.lazyvim.org/extras/lang/ruby)
-  - Add support for tests: install `test.core`
-  - Install `coding.mini-surround` to enable `gsr'"` to turn Ruby `'string'` into `"string"`
-  - Install `lang.java` for Java support, `dap.core`  for debugging
+- (Optional) toggle more Lazy Extras: press `x` on the main LazyVim screen
 
 # Further reading
 

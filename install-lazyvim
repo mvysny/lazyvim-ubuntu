@@ -31,11 +31,6 @@ echo -e "\n* Installing NeoVim"
 sudo apt autoremove --purge neovim
 sudo snap install nvim --classic
 
-# Probably necessary for Lua (used heavily by LazyVim)?
-# Fixes Lua-related Query Error: "substitute" (?)
-echo -e "\n* Installing luarocks"
-sudo apt install luarocks -y
-
 # Configure LazyVim according to https://www.lazyvim.org/installation
 echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
@@ -43,8 +38,29 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 mkdir -p ~/.config/nvim/lua/plugins/
 cp *.lua ~/.config/nvim/lua/plugins/
 
+# Enable LazyVim extras by writing lazyvim.json, the file :LazyExtras itself maintains, so they stay toggleable there.
+# Both version fields are needed: without "version" LazyVim migrates the file as the oldest format and double-prefixes
+# every extra; without "install_version" it assumes an old install and keeps the legacy picker/explorer defaults.
+echo -e "\n* Enabling LazyVim extras"
+extras=(coding.mini-surround coding.yanky dap.core lang.ruby test.core)
+# jdtls needs a JDK; without one lang.java only produces errors
+if command -v java >/dev/null; then
+  extras+=(lang.java)
+else
+  echo "* WARN: no java on PATH, skipping lang.java but continuing"
+fi
+json_extras=$(printf '    "lazyvim.plugins.extras.%s",\n' "${extras[@]}")
+cat > ~/.config/nvim/lazyvim.json <<EOF
+{
+  "extras": [
+${json_extras%,}
+  ],
+  "install_version": 8,
+  "version": 8
+}
+EOF
+
 # Done!
 echo -e "\n* Done. Now:"
 echo "- Run nvim from the Alacritty terminal"
 echo "- Once everything installs, run :LazyHealth"
-echo "- Install LazyVim/Ruby: open Lazy Extras and install lang.ruby. More info: https://www.lazyvim.org/extras/lang/ruby"
