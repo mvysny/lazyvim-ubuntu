@@ -1,43 +1,37 @@
 #!/bin/bash
 set -e -o pipefail
 
-# Nerd Font: downloaded from https://www.nerdfonts.com/
+# Nerd Fonts: downloaded from https://www.nerdfonts.com/
 # Used by lazyvim a lot, for all sorts of ascii graphics, keyboard characters etc.
 # You want this, otherwise lazyvim will show lots of missing characters.
 # Necessary for Alacritty
-if [[ ! -e "$HOME/.local/share/fonts/UbuntuMonoNerdFont-Regular.ttf" ]]; then
-  echo -e "\n* Downloading UbuntuMono Nerd Font"
-  mkdir -p ~/.local/share/fonts
 
-  curl -fLo "UbuntuMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/UbuntuMono.zip
-  unzip -x UbuntuMono.zip -d ~/.local/share/fonts/
-  rm ~/.local/share/fonts/*.md
-  rm ~/.local/share/fonts/*.txt
-  rm UbuntuMono.zip
+FONTS_DIR="$HOME/.local/share/fonts"
 
-  # update font cache. Rarely that fails - just skip it
-  fc-cache -fv || echo "* WARN: fc-cache failed but continuing"
-  fc-list | grep -i "UbuntuMono.*Nerd"
+# Installs Nerd Font $1 (the release zip's base name, e.g. UbuntuMono) unless already present.
+install_nerd_font() {
+  local name="$1"
+  if [[ -e "$FONTS_DIR/${name}NerdFont-Regular.ttf" ]]; then
+    echo -e "\n* $name Nerd Font already installed"
+    return
+  fi
 
-else
-  echo -e "\n* UbuntuMono Nerd Font already installed"
-fi
-
-# JetBrains mono
-if [[ ! -e "$HOME/.local/share/fonts/JetBrainsMonoNerdFont-Regular.ttf" ]]; then
-  echo -e "\n* Downloading JetBrains Nerd Font"
-  mkdir -p ~/.local/share/fonts
-
-  curl -fLo "JetBrainsMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
-  unzip -x JetBrainsMono.zip -d ~/.local/share/fonts/
-  rm ~/.local/share/fonts/*.md
-  rm ~/.local/share/fonts/*.txt
-  rm JetBrainsMono.zip
+  echo -e "\n* Downloading $name Nerd Font"
+  mkdir -p "$FONTS_DIR"
+  local zip
+  zip="$(mktemp --suffix=.zip)"
+  curl -fLo "$zip" "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$name.zip"
+  # only the fonts, not the readme/license; -o overwrites a half-finished earlier run without prompting
+  unzip -oq "$zip" '*.ttf' -d "$FONTS_DIR"
+  rm "$zip"
 
   # update font cache. Rarely that fails - just skip it
-  fc-cache -fv || echo "* WARN: fc-cache failed but continuing"
-  fc-list | grep -i "JetBrainsMono.*Nerd"
+  fc-cache -f || echo "* WARN: fc-cache failed but continuing"
+  if ! fc-list -q "$name Nerd Font"; then
+    echo "* ERROR: $name Nerd Font installed but fc-list can't find it" >&2
+    exit 1
+  fi
+}
 
-else
-  echo -e "\n* JetBrains Nerd Font already installed"
-fi
+install_nerd_font UbuntuMono
+install_nerd_font JetBrainsMono
