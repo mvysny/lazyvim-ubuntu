@@ -24,17 +24,19 @@ sudo apt install lazygit -y
 # Install basic LazyVim dependencies
 echo -e "\n* Installing basic LazyVim dependencies"
 sudo apt install fzf ripgrep fd-find -y
+# Not tree-sitter-cli: nvim-treesitter needs 0.26.1+ and apt's is older, which makes :checkhealth fail;
+# with no tree-sitter on PATH, LazyVim installs the current release through mason instead.
 
 # Install neovim. Need to install the one from snap:
 # apt-based is older and lazyvim requires 0.11+
 echo -e "\n* Installing NeoVim"
-sudo apt autoremove --purge neovim
+sudo apt autoremove --purge neovim -y
 sudo snap install nvim --classic
 
 # Configure LazyVim according to https://www.lazyvim.org/installation
 echo -e "\n* Configuring NeoVim for LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
-# Use light theme
+# Our plugin overrides: the light theme, the explorer and lazygit tweaks
 mkdir -p ~/.config/nvim/lua/plugins/
 cp *.lua ~/.config/nvim/lua/plugins/
 
