@@ -35,6 +35,7 @@ sudo snap install nvim --classic
 
 # Configure LazyVim according to https://www.lazyvim.org/installation
 echo -e "\n* Configuring NeoVim for LazyVim"
+rm -rf ~/.config/nvim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 # Our plugin overrides: the light theme, the explorer and lazygit tweaks
 mkdir -p ~/.config/nvim/lua/plugins/
